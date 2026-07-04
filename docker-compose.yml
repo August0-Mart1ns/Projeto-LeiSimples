@@ -1,0 +1,59 @@
+name: leisimples
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: leisimples_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: leisimples
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - leisimples_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d leisimples"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build:
+      context: ./backend
+    container_name: leisimples-api
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      NODE_ENV: development
+      PORT: 3001
+      DATABASE_URL: postgres://postgres:postgres@postgres:5432/leisimples
+      JWT_SECRET: change-me-in-production
+      JWT_EXPIRES_IN: 7d
+      CORS_ORIGIN: http://localhost:5173
+      AI_SERVICE_URL: http://ai-service:5001
+      AI_TIMEOUT_MS: 15000
+      APP_URL: http://localhost:5173
+      EMAIL_FROM: LeiSimples <noreply@leisimples.com>
+      RESEND_API_KEY: ${RESEND_API_KEY:-}
+    ports:
+      - "3001:3001"
+
+  ai-service:
+    build:
+      context: ./ia-service
+    container_name: leisimples-ai
+    restart: unless-stopped
+    env_file:
+      - ./ia-service/.env
+    environment:
+      FLASK_ENV: development
+      PORT: 5001
+    ports:
+      - "5001:5001"
+
+volumes:
+  leisimples_pgdata:

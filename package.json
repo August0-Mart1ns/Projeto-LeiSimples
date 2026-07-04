@@ -1,0 +1,27 @@
+{
+  "name": "leisimples",
+  "private": true,
+  "scripts": {
+    "dev:frontend": "npm --prefix frontend run dev",
+    "dev:backend": "npm --prefix backend run dev",
+    "dev:mobile": "npm --prefix mobile run start",
+    "dev:ia": "cd ia-service && flask --app app run --host 0.0.0.0 --port 5001",
+    "frontend": "npm run dev:frontend",
+    "backend": "npm run dev:backend",
+    "ia": "npm run dev:ia",
+    "web": "npm run dev:frontend",
+    "api": "npm run dev:backend",
+    "mobile": "npm run dev:mobile",
+    "build:frontend": "npm --prefix frontend run build",
+    "test:backend": "npm --prefix backend run test",
+    "lint:frontend": "npm --prefix frontend run lint",
+    "lint:backend": "npm --prefix backend run lint",
+    "db:migrate": "npm --prefix backend run db:migrate",
+    "db:seed": "npm --prefix backend run db:seed",
+    "demo:up": "docker compose up -d --build postgres ai-service api",
+    "demo:reset-db": "docker compose exec -T api npm run db:migrate && docker compose exec -T api npm run db:seed",
+    "demo:web": "npm --prefix frontend run dev -- --host 127.0.0.1 --port 5174",
+    "demo:check": "node scripts/demo-check.mjs",
+    "demo:check:ai": "node scripts/demo-check.mjs --real-ai"
+  }
+}
