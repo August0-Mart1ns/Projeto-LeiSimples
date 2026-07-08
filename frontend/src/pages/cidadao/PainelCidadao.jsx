@@ -235,7 +235,7 @@ export default function PainelCidadao() {
     <div className="min-h-screen bg-cream">
       <Topbar tipo="cidadao" />
 
-      <section className="px-8 lg:px-[60px] py-9 flex items-center justify-between bg-navy">
+      <section className="px-8 lg:px-[60px] py-5 flex items-center justify-between bg-navy">
         <div>
           <p className="text-white/45 text-sm mb-1">Bem-vindo de volta</p>
           <h1 className="font-fraunces text-[28px] font-normal text-white">{usuario?.nome}</h1>
@@ -249,7 +249,7 @@ export default function PainelCidadao() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
           {[['Casos abertos', abertos], ['Em atendimento', andamento], ['Resolvidos', resolvidos]].map(([label, value]) => (
             <div key={label} className="card text-center">
-              <div className="font-fraunces text-[28px] font-semibold text-navy">{value}</div>
+              <div className="font-fraunces text-[24px] font-semibold text-navy">{value}</div>
               <div className="text-xs text-gray-400 mt-1">{label}</div>
             </div>
           ))}
