@@ -24,7 +24,7 @@ export default function AdvogadosScreen({ route }) {
     setMensagem('')
     try {
       await solicitacoesService.criar(caso.id, advogadoId)
-      setMensagem('Solicitação enviada ao advogado.')
+      setMensagem('Solicitação enviada. O advogado receberá o resumo do caso antes de responder.')
     } catch {
       setMensagem('Não foi possível enviar a solicitação.')
     }

@@ -8,7 +8,7 @@ const exemplos = [
   'Fui demitido e acho que a rescisão está errada',
   'Meu senhorio não quer devolver a caução',
   'Me cobraram depois de cancelar o plano',
-  'O plano de saade negou minha cirurgia',
+  'O plano de saúde negou minha cirurgia',
 ]
 
 export default function Analise() {

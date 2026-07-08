@@ -143,6 +143,52 @@ function normalizeAnalysis(row, raw = {}) {
   }
 }
 
+async function getLatestAnalysis(casoId, cidadaoId) {
+  const { rows } = await query(
+    `SELECT *
+     FROM analises_ia
+     WHERE caso_id = $1 AND cidadao_id = $2
+     ORDER BY criado_em DESC
+     LIMIT 1`,
+    [casoId, cidadaoId]
+  )
+
+  return rows[0] ? normalizeAnalysis(rows[0], rows[0].resposta_bruta || {}) : null
+}
+
+async function ensureCaseAnalysis({ casoId, cidadaoId, descricao, rendaAproximada }) {
+  const latest = await getLatestAnalysis(casoId, cidadaoId)
+  if (latest) return latest
+
+  if (!descricao || descricao.trim().length < 10) return null
+
+  const payload = {
+    caso_id: casoId,
+    descricao,
+    renda_aproximada: rendaAproximada || null
+  }
+  const aiResponse = await callAiService('/analyze', payload)
+  const analysis = aiResponse || fallbackAnalysis(descricao, rendaAproximada, 'problema')
+
+  if (analysis.area_direito) {
+    await query(
+      `UPDATE casos
+       SET area_direito = COALESCE(area_direito, $1), atualizado_em = NOW()
+       WHERE id = $2 AND cidadao_id = $3`,
+      [analysis.area_direito, casoId, cidadaoId]
+    )
+  }
+
+  const saved = await saveAnalysis({
+    casoId,
+    cidadaoId,
+    tipo: 'problema',
+    analysis
+  })
+
+  return normalizeAnalysis(saved, analysis)
+}
+
 async function analisar(cidadaoId, payload) {
   const existingCase = await ensureOwnedCase(payload.caso_id, cidadaoId)
   const aiResponse = await callAiService('/analyze', payload)
@@ -218,22 +264,15 @@ async function analisarContrato(cidadaoId, payload) {
 async function buscarAnalise(casoId, cidadaoId) {
   await casosService.getOwned(casoId, cidadaoId)
 
-  const { rows } = await query(
-    `SELECT *
-     FROM analises_ia
-     WHERE caso_id = $1 AND cidadao_id = $2
-     ORDER BY criado_em DESC
-     LIMIT 1`,
-    [casoId, cidadaoId]
-  )
-
-  if (!rows[0]) throw new ApiError(404, 'Análise não encontrada.')
-  return normalizeAnalysis(rows[0], rows[0].resposta_bruta || {})
+  const analysis = await getLatestAnalysis(casoId, cidadaoId)
+  if (!analysis) throw new ApiError(404, 'Análise não encontrada.')
+  return analysis
 }
 
 module.exports = {
   analisar,
   analisarContrato,
   buscarAnalise,
+  ensureCaseAnalysis,
   fallbackAnalysis
 }

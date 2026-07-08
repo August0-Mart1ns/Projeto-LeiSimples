@@ -123,7 +123,7 @@ export default function Landing() {
               <div className="mt-5 bg-navy rounded-2xl p-4 flex gap-3 items-start">
                 <PhoneCall size={20} className="text-teal-light shrink-0 mt-0.5" />
                 <p className="text-white/70 text-sm leading-relaxed">
-                  A triagem não substitui advogado. Ela ajuda você a chegar mais preparado.
+                  A triagem não substitui o advogado. Ela ajuda você a chegar mais preparado.
                 </p>
               </div>
             </div>

@@ -106,19 +106,6 @@ Para validar o microsserviço de IA:
 ```bash
 ia-service\.venv\Scripts\python -m py_compile ia-service\app.py
 ```
-
-Checklist de publicação: [`docs/CHECKLIST_PRODUCAO.md`](docs/CHECKLIST_PRODUCAO.md)
-
-Pendencias e melhorias planejadas: [`docs/PROXIMOS_PASSOS.md`](docs/PROXIMOS_PASSOS.md)
-
-Relatório resumido para apresentação: [`docs/RELATORIO_APRESENTACAO.md`](docs/RELATORIO_APRESENTACAO.md)
-
-Checklist para apresentação: [`docs/CHECKLIST_APRESENTACAO.md`](docs/CHECKLIST_APRESENTACAO.md)
-
-Roteiro da demo de sabado: [`docs/ROTEIRO_DEMO_SABADO.md`](docs/ROTEIRO_DEMO_SABADO.md)
-
-Pacote de telas para importar no Figma: [`docs/figma-ready/IMPORTAR_NO_FIGMA.md`](docs/figma-ready/IMPORTAR_NO_FIGMA.md)
-
 ## Contas de teste
 
 Todas usam a senha `123456`.

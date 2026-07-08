@@ -3,8 +3,8 @@ import { Check, FileText, Mail, Scale } from 'lucide-react'
 import Topbar from '@/components/layout/Topbar'
 
 const passos = [
-  { label: 'Solicitação enviada', desc: 'Sua solicitação chegou para o advogado agora mesmo.' },
-  { label: 'Análise do caso', desc: 'O profissional avalia se consegue assumir o atendimento.' },
+  { label: 'Solicitação enviada', desc: 'O advogado receberá o resumo do caso, a análise inicial e os pontos de atenção.' },
+  { label: 'Análise do caso', desc: 'Com essas informações, o profissional avalia se consegue assumir o atendimento.' },
   { label: 'Primeiro contato', desc: 'Após aceitar, o advogado entra em contato pelos dados cadastrados.' },
   { label: 'Atendimento e avaliação', desc: 'Depois do atendimento você pode avaliar a experiência.' },
 ]
@@ -31,7 +31,7 @@ export default function Confirmacao() {
             </div>
             <h1 className="font-fraunces text-[32px] font-normal text-navy mb-2">Solicitação enviada</h1>
             <p className="text-[15px] text-gray-400 leading-relaxed max-w-[420px] mx-auto mb-8">
-              O advogado receberá os dados do caso e poderá aceitar ou recusar o atendimento pela plataforma.
+              O advogado receberá o resumo do seu caso antes de decidir se aceita ou recusa o atendimento pela plataforma.
             </p>
 
             <div className="bg-cream rounded-xl p-5 flex gap-4 items-center mb-8 border border-cream-darker text-left">

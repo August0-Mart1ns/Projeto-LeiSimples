@@ -44,7 +44,7 @@ export default function Resultado() {
         <div className="px-8 lg:px-[60px] py-12">
           <div className="card text-center">
             <h1 className="font-fraunces text-[26px] text-navy mb-2">Carregando análise</h1>
-            <p className="text-sm text-gray-400">Recuperando o altimo resultado salvo.</p>
+            <p className="text-sm text-gray-400">Recuperando o último resultado salvo.</p>
           </div>
         </div>
       </div>
@@ -128,7 +128,7 @@ export default function Resultado() {
           </div>
 
           <div className="card">
-            <div className="section-label">Praximos passos</div>
+            <div className="section-label">Próximos passos</div>
             {(analise?.proximos_passos || []).map((passo, index) => (
               <div key={passo} className="flex gap-3 mb-4 last:mb-0 text-sm text-gray-500">
                 <span className="w-6 h-6 rounded-full bg-navy text-white flex items-center justify-center text-xs">
