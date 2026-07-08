@@ -235,7 +235,7 @@ export default function PainelCidadao() {
     <div className="min-h-screen bg-cream">
       <Topbar tipo="cidadao" />
 
-      <section className="px-8 lg:px-[60px] py-5 flex items-center justify-between bg-navy">
+      <section className="px-8 lg:px-[60px] py-4 flex items-center justify-between bg-navy">
         <div>
           <p className="text-white/45 text-sm mb-1">Bem-vindo de volta</p>
           <h1 className="font-fraunces text-[28px] font-normal text-white">{usuario?.nome}</h1>

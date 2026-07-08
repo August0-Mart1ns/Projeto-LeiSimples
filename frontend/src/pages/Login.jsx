@@ -43,7 +43,7 @@ export default function Login() {
             Lei<span className="text-teal-light">Simples</span>
           </div>
           <h1 className="font-fraunces text-[38px] font-light text-white leading-tight mb-4">
-            Bem-vindo de volta
+            Bem-vindo(a) de volta
           </h1>
           <p className="text-white/55 text-sm leading-relaxed max-w-md">
             Acesse sua conta para acompanhar casos, análises e solicitações de atendimento.
