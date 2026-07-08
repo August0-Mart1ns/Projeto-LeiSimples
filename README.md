@@ -55,8 +55,6 @@ npm run db:seed
 ```bash
 npm run dev:backend
 npm run dev:frontend
-npm run dev:mobile
-```
 
 7. Para o serviço de IA:
 
@@ -74,22 +72,6 @@ flask --app app run --host 0.0.0.0 --port 5001
 - Backend: `http://localhost:3001/api`
 - IA: `http://localhost:5001/health`
 - PostgreSQL: `localhost:5432`
-
-Em desenvolvimento, o reset de senha ainda retorna o token na resposta. Em produção, configure `RESEND_API_KEY`, `EMAIL_FROM` e `APP_URL` para envio real por e-mail.
-O backend também usa `AI_TIMEOUT_MS` para limitar chamadas ao microsserviço de IA e cair no fallback quando o serviço estiver indisponível. Para IA real, configure `OPENROUTER_API_KEY` no `ia-service/.env`.
-
-## Modo apresentação
-
-Para preparar a demo do sabado:
-
-```bash
-npm run demo:up
-npm run demo:reset-db
-npm run demo:check
-npm run demo:web
-```
-
-O roteiro completo está em [`docs/ROTEIRO_DEMO_SABADO.md`](docs/ROTEIRO_DEMO_SABADO.md).
 
 ## Qualidade
 
