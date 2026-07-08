@@ -73,6 +73,23 @@ flask --app app run --host 0.0.0.0 --port 5001
 - IA: `http://localhost:5001/health`
 - PostgreSQL: `localhost:5432`
 
+<<<<<<< HEAD
+=======
+
+## Modo apresentação
+
+Para preparar a demo do sabado:
+
+```bash
+npm run demo:up
+npm run demo:reset-db
+npm run demo:check
+npm run demo:web
+```
+
+O roteiro completo está em [`docs/ROTEIRO_DEMO_SABADO.md`](docs/ROTEIRO_DEMO_SABADO.md).
+
+>>>>>>> 01a13f0 (Acrescentado Ngrok ao projeto)
 ## Qualidade
 
 ```bash
