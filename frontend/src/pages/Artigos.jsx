@@ -19,7 +19,7 @@ export default function Artigos() {
     <div className="min-h-screen bg-cream">
       <Topbar tipo="publico" />
       <main className="px-8 lg:px-[60px] py-10">
-        <h1 className="font-fraunces text-[32px] font-normal text-navy mb-2">Artigos</h1>
+        <h1 className="font-fraunces text-[32px] font-normal text-navy mb-2">Orientações</h1>
         <p className="text-sm text-gray-400 mb-8">Conteúdos simples para entender direitos e organizar próximos passos.</p>
 
         {loading ? (
@@ -36,7 +36,7 @@ export default function Artigos() {
                 <h2 className="font-fraunces text-[22px] text-navy mt-4 mb-2">{artigo.titulo}</h2>
                 <p className="text-sm text-gray-500 leading-relaxed">{artigo.resumo || artigo.conteudo}</p>
                 <Link to={`/artigos/${artigo.slug}`} className="inline-flex mt-5 text-sm font-semibold text-teal hover:underline">
-                  Ler artigo
+                  Ler Orientação
                 </Link>
               </article>
             ))}
