@@ -28,7 +28,7 @@ export default function Topbar({ tipo = 'publico' }) {
         {tipo === 'publico' && (
           <>
             <button onClick={() => navigate('/artigos')} className="hidden md:inline text-white/60 text-sm hover:text-white">
-              Artigos
+              Orientações
             </button>
             <button onClick={() => navigate('/aviso-ia')} className="hidden md:inline text-white/60 text-sm hover:text-white">
               IA
